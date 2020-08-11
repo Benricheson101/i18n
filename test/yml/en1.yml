@@ -1,4 +1,2 @@
 en:
-  NESTED:
-    OBJECTS:
-      WORK: 'This is a %{placeholder} object'
+  STRING: 'en: {{one}} %{two} %{three}'

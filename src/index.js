@@ -3,8 +3,23 @@ const { readFileSync, readdirSync } = require('fs')
 
 class I18n {
   constructor () {
+    this.placeholderRegex = /%{(?<placeholder>.*?)}/g
     this.langs = {}
     this.raw = {}
+  }
+
+  parse (yml) {
+    const file = safeLoad(yml)
+    const code = Object.keys(file)[0]
+
+    if (this.langs[code]) {
+      this.langs[code] = { ...this.langs[code], ...file[code] }
+      this.raw[code].push(file)
+    } else {
+      this.langs[code] = file[code]
+      this.raw[code] = [file]
+    }
+    return this
   }
 
   parseDir (dir) {
@@ -20,28 +35,21 @@ class I18n {
     if (!path) throw new Error('no path')
 
     const contents = readFileSync(path, { encoding: 'utf-8' })
-    const file = safeLoad(contents)
-    const code = Object.keys(file)[0]
-
-    if (this.langs[code]) {
-      this.langs[code] = { ...this.langs[code], ...file[code] }
-      this.raw[code].push(file)
-    } else {
-      this.langs[code] = file[code]
-      this.raw[code] = [file]
-    }
+    this.parse(contents)
 
     return this
+  }
+
+  get (code, string) {
+    return this._parseKeyString(code, string) ?? string
   }
 
   replace (code, string, replace = {}) {
     const str = this._parseKeyString(code, string)
     if (!str) return string
 
-    const regex = new RegExp('%{(.*?)}', 'g')
-
-    return str.replace(regex, (match) => {
-      const e = /%{(?<placeholder>.*?)}/g.exec(match)
+    return str.replace(this.placeholderRegex, (match) => {
+      const e = this.placeholderRegex.exec(match)
       return replace[e?.groups?.placeholder] ?? match
     })
   }
@@ -55,6 +63,15 @@ class I18n {
       else return null
     }
     return out
+  }
+
+  set regex (r) {
+    this.placeholderRegex = r
+    return this
+  }
+
+  get regex () {
+    return this.placeholderRegex
   }
 }
 
