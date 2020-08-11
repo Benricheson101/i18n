@@ -1,5 +1,5 @@
 <h1 align="center">i18 🌐</h1>
-This is a very tiny (60 lines of code!!) internationalization library.
+This is a very tiny internationalization library.
 
 ## Usage Example:
 ```yaml
@@ -31,7 +31,7 @@ const i = new I18n()
 - `get(code: string, stringKey: string)` - gets a string
 - `replace(code: string, stringKey: string, placeholders: object)` - gets a string and replaces placeholders
 
-### Setters:
+### Setters/Getters:
 - `regex () = placeholder_regex: RegExp` - regex for extracting and replacing placeholders. note: the placeholder name capture group MUST be named `placeholder`
 
 ### Static Properties:
