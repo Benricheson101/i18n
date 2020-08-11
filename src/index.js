@@ -34,7 +34,7 @@ class I18n {
     return this
   }
 
-  replace (code, string, replace) {
+  replace (code, string, replace = {}) {
     const str = this._parseKeyString(code, string)
     if (!str) return string
 
