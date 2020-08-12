@@ -1,24 +1,29 @@
 <h1 align="center">i18 🌐</h1>
 This is a very tiny internationalization library.
 
-## Usage Example:
-```yaml
-# i18n/en.yml
-en:
-  STRING: 'This is a string'
-  STRING_WITH_PLACEHOLDER: 'This is a placeholder: %{placeholder}'
-  NESTED:
-    OBJECTS:
-      WORK:
-        TOO: 'abcde'
-```
+## Usage:
+1. Instantiate the constructor
 ```js
 const i = new I18n()
-  .parseDir('./i18n')
-
- i.get('en', 'STRING') // This is a string
- i.replace('en', 'STRING_WITH_PLACEHOLDER', { placeholder: 'abc123' }) // This is a placeholder: abc123
- i.get('en', 'NESTED.OBJECTS.WORK.TOO') // abcde
+```
+2. Parse yaml
+```js
+i.parseDir('./i18n')
+  .parseFile('./en.yml')
+  .parse(`
+en:
+  STRING: 'aaaaaa'
+  PLACEHOLDER: 'This has a placeholder: %{food}'
+  COMMAND:
+    MAN:
+      SHORT_DESC: 'Read a command\'s manual'
+  `)
+```
+3. Use the string methods!
+```js
+i.get('en', 'STRING') // aaaaaa
+i.replace('en', 'PLACEHOLDER', { food: 'potato' }) // This has a placeholder: potato
+i.get('en', 'COMMAND:MAN:SHORT_DESC') // Read a command's manual
 ```
 
 ## Methods:
@@ -38,3 +43,22 @@ const i = new I18n()
 - `langs` - the added language files/strings
 - `raw` - an array of raw language file data
 
+## Usage Example:
+```yaml
+# i18n/en.yml
+en:
+  STRING: 'This is a string'
+  STRING_WITH_PLACEHOLDER: 'This is a placeholder: %{placeholder}'
+  NESTED:
+    OBJECTS:
+      WORK:
+        TOO: 'abcde'
+```
+```js
+const i = new I18n()
+  .parseDir('./i18n')
+
+ i.get('en', 'STRING') // This is a string
+ i.replace('en', 'STRING_WITH_PLACEHOLDER', { placeholder: 'abc123' }) // This is a placeholder: abc123
+ i.get('en', 'NESTED:OBJECTS:WORK:TOO') // abcde
+```
