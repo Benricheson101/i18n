@@ -1,4 +1,4 @@
-<h1 align="center">i18 🌐</h1>
+<h1 align="center">i18n 🌐</h1>
 This is a very tiny internationalization library.
 
 ## Usage:
