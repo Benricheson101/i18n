@@ -1,5 +1,5 @@
 <h1 align="center">i18n 🌐</h1>
-This is a very tiny internationalization library.
+A very tiny internationalization library.
 
 ## Usage:
 1. Install i18n
