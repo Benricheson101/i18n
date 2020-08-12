@@ -1,4 +1,4 @@
-const { I18n } = require('../src/index.js')
+const I18n = require('../src/index.js')
 const assert = require('assert')
 
 const i = new I18n()

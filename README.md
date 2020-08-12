@@ -2,11 +2,18 @@
 This is a very tiny internationalization library.
 
 ## Usage:
-1. Instantiate the constructor
+1. Install i18n
+```bash
+$ yarn add @benricheson101/i18n
+# or
+$ npm insatll @benricheson101/i18n
+```
+2. Import and instantiate the constructor
 ```js
+const I18n = require('@benricheson101/i18n')
 const i = new I18n()
 ```
-2. Parse yaml
+3. Parse yaml
 ```js
 i.parseDir('./i18n')
   .parseFile('./en.yml')
@@ -19,7 +26,7 @@ en:
       SHORT_DESC: 'Read a command\'s manual'
   `)
 ```
-3. Use the string methods!
+4. Use the string methods!
 ```js
 i.get('en', 'STRING') // aaaaaa
 i.replace('en', 'PLACEHOLDER', { food: 'potato' }) // This has a placeholder: potato
