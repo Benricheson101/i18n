@@ -1,6 +1,4 @@
 declare module '@benricheson101/i18n' {
-  import { PathLike } from 'fs'
-
   export class I18n {
     placeholderRegex: RegExp
     regex: RegExp
@@ -9,11 +7,12 @@ declare module '@benricheson101/i18n' {
 
     constructor ()
 
-    parseDir (dir: PathLike): this
-    parseFile (dir: PathLike): this
-    parse (dir: PathLike): this
+    parseDir (dir: string): this
+    parseFile (file: string): this
+    parse (yaml: string): this
 
     get (code: string, string: string): string
+
     replace (code: string, string: string, replace: any): string
   }
 }

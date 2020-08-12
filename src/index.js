@@ -8,6 +8,7 @@ class I18n {
     this.raw = {}
   }
 
+  /** Parse a yaml string */
   parse (yml) {
     const file = safeLoad(yml)
     const code = Object.keys(file)[0]
@@ -22,6 +23,7 @@ class I18n {
     return this
   }
 
+  /** Parse all yaml files in a specified directory */
   parseDir (dir) {
     const files = readdirSync(dir, { encoding: 'utf-8' }).filter((e) => e.endsWith('.yml'))
 
@@ -31,6 +33,7 @@ class I18n {
     return this
   }
 
+  /** Parse a single yaml file */
   parseFile (path) {
     if (!path) throw new Error('no path')
 
@@ -40,10 +43,23 @@ class I18n {
     return this
   }
 
+  /**
+   * Get a translated string
+   * @param {string} code - langauge code
+   * @param {string} string - the string key to return
+   * @returns {string} - the translated string
+   */
   get (code, string) {
     return this._parseKeyString(code, string) ?? string
   }
 
+  /**
+   * Get a translated string with replaced placeholders
+   * @param {string} code - langauge code
+   * @param {string} string - the string key to return
+   * @param {object} replace - placeholders
+   * @returns {string} - the translated string
+   */
   replace (code, string, replace = {}) {
     const str = this._parseKeyString(code, string)
     if (!str) return string

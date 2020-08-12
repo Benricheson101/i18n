@@ -9,22 +9,15 @@
     "type": "git",
     "url": "https://github.com/benricheson101/i18n"
   },
-  "exports": {
-    ".": [
-      {
-        "require": "./src/index.js",
-        "import": "./src/index.mjs"
-      },
-      "./src/index.js"
-    ]
-  },
   "devDependencies": {
+    "@types/node": "^14.0.27",
     "eslint": "^7.6.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
     "js-yaml": "^3.14.0"
