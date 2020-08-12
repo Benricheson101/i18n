@@ -6,7 +6,7 @@ A very tiny internationalization library.
 ```bash
 $ yarn add @benricheson101/i18n
 # or
-$ npm insatll @benricheson101/i18n
+$ npm install @benricheson101/i18n
 ```
 2. Import and instantiate the constructor
 ```js
