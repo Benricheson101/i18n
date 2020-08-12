@@ -1,8 +1,13 @@
 {
   "name": "@benricheson101/i18n",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "license": "MIT",
+  "types": "src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benricheson101/i18n"
+  },
   "devDependencies": {
     "eslint": "^7.6.0",
     "eslint-config-standard": "^14.1.1",
@@ -13,5 +18,8 @@
   },
   "dependencies": {
     "js-yaml": "^3.14.0"
-  }
+  },
+  "files": [
+    "src/*"
+  ]
 }
