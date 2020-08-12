@@ -9,6 +9,15 @@
     "type": "git",
     "url": "https://github.com/benricheson101/i18n"
   },
+  "exports": {
+    ".": [
+      {
+      "require": "./src/index.js",
+      "import": "./src/index.mjs"
+      },
+    "./src/index.js"
+    ]
+  },
   "devDependencies": {
     "eslint": "^7.6.0",
     "eslint-config-standard": "^14.1.1",
