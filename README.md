@@ -61,6 +61,7 @@ en:
       WORK:
         TOO: 'abcde'
 ```
+> Note: yaml files must start with the language code on the first line, with no indentation, followed by translated strings. Refer to the above example.
 ```js
 const i = new I18n()
   .parseDir('./i18n')
