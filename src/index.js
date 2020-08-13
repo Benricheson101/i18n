@@ -42,6 +42,8 @@ class I18n {
     for (const file of files) {
       this.parseFile(`${dir}/${file}`)
     }
+
+    return this
   }
 
   /** Parse a single yaml file */
