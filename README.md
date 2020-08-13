@@ -35,9 +35,10 @@ i.get('en', 'COMMAND:MAN:SHORT_DESC') // Read a command's manual
 
 ## Methods:
 ### Parse Methods:
-- `parseDir(dir: PathLike)` - adds all files ending in `.yml` from the specified dir
-- `parseFile(dir: PathLike)` - adds a single file
-- `parse(yml: string)` - adds a yml string
+- `parseDir(dir: string)` - adds all files ending in `.yml` from the specified dir
+- `parseFile(dir: string)` - adds a single file
+- `parseRecursive(file: string)` - adds all yaml files in a dir/subdirs recursively
+- `parse(yaml: string)` - adds a yaml string
 
 ### String Methods:
 - `get(code: string, stringKey: string)` - gets a string

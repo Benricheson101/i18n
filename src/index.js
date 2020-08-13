@@ -1,5 +1,7 @@
 const { safeLoad } = require('js-yaml')
 const { readFileSync, readdirSync } = require('fs')
+const merge = require('deepmerge')
+const recursive = require('fs-readdir-recursive')
 
 class I18n {
   constructor () {
@@ -14,7 +16,7 @@ class I18n {
     const code = Object.keys(file)[0]
 
     if (this.langs[code]) {
-      this.langs[code] = { ...this.langs[code], ...file[code] }
+      this.langs[code] = merge(this.langs[code], file[code])
       this.raw[code].push(file)
     } else {
       this.langs[code] = file[code]
@@ -33,9 +35,19 @@ class I18n {
     return this
   }
 
+  /** Parse all yaml files in a dir/subdirs recursively */
+  parseRecursive (dir) {
+    const files = recursive(dir)
+
+    for (const file of files) {
+      this.parseFile(`${dir}/${file}`)
+    }
+  }
+
   /** Parse a single yaml file */
   parseFile (path) {
     if (!path) throw new Error('no path')
+    if (!path.endsWith('.yml')) return
 
     const contents = readFileSync(path, { encoding: 'utf-8' })
     this.parse(contents)

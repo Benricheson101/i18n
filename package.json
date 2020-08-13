@@ -20,6 +20,8 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "deepmerge": "^4.2.2",
+    "fs-readdir-recursive": "^1.1.0",
     "js-yaml": "^3.14.0"
   },
   "files": [

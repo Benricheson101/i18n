@@ -1,2 +1,4 @@
 en:
   STRING: 'en: {{one}} %{two} %{three}'
+  CMD:
+    STR1: '12345'
