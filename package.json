@@ -1,7 +1,7 @@
 {
   "name": "@benricheson101/i18n",
   "description": "A very tiny Node.js internationalization library",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "main": "src/index.js",
   "license": "MIT",
   "types": "src/index.d.ts",
@@ -20,9 +20,9 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "deepmerge": "^4.2.2",
     "fs-readdir-recursive": "^1.1.0",
-    "js-yaml": "^3.14.0"
+    "js-yaml": "^3.14.0",
+    "merge-deep": "^3.0.2"
   },
   "files": [
     "src/*"

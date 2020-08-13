@@ -1,12 +1,13 @@
 const { safeLoad } = require('js-yaml')
 const { readFileSync, readdirSync } = require('fs')
-const merge = require('deepmerge')
+const merge = require('merge-deep')
 const recursive = require('fs-readdir-recursive')
 
 class I18n {
   constructor () {
     this.placeholderRegex = /%{(?<placeholder>.*?)}/g
-    this.langs = {}
+    this.langs = new Set()
+    this.strings = {}
     this.raw = {}
   }
 
@@ -14,12 +15,13 @@ class I18n {
   parse (yml) {
     const file = safeLoad(yml)
     const code = Object.keys(file)[0]
+    this.langs.add(code)
 
-    if (this.langs[code]) {
-      this.langs[code] = merge(this.langs[code], file[code])
+    if (this.strings[code]) {
+      this.strings[code] = merge(this.strings[code], file[code])
       this.raw[code].push(file)
     } else {
-      this.langs[code] = file[code]
+      this.strings[code] = file[code]
       this.raw[code] = [file]
     }
     return this
@@ -85,7 +87,8 @@ class I18n {
   }
 
   _parseKeyString (code, str) {
-    let out = this.langs[code]
+    if (!this.langs.has(code)) return null
+    let out = this.strings[code]
 
     const layer = str.split(/[:.]/)
     for (const l of layer) {

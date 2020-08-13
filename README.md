@@ -48,7 +48,8 @@ i.get('en', 'COMMAND:MAN:SHORT_DESC') // Read a command's manual
 - `regex () = placeholder_regex: RegExp` - regex for extracting and replacing placeholders. note: the placeholder name capture group MUST be named `placeholder`
 
 ### Static Properties:
-- `langs` - the added language files/strings
+- `langs` - a set contain all of the added language codes
+- `strings` - the added language files/strings
 - `raw` - an array of raw language file data
 
 ## Usage Example:

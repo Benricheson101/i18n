@@ -5,8 +5,8 @@ const i = new I18n()
 
 i.parseRecursive('./yml')
 
-console.log(i.langs?.en)
+// console.log(i.langs?.en)
 
-// console.log(i.get('en', 'CMD:STR3'))
+console.log(i.get('en', 'THING2'))
 
 // assert(i.get('en', 'THING') === 'abcd')
