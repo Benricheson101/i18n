@@ -40,6 +40,7 @@ class I18n {
   /** Parse all yaml files in a dir/subdirs recursively */
   parseRecursive (dir) {
     const files = recursive(dir)
+      .filter((e) => e.endsWith('.yml'))
 
     for (const file of files) {
       this.parseFile(`${dir}/${file}`)
@@ -81,7 +82,7 @@ class I18n {
     if (!str) return string
 
     return str.replace(this.placeholderRegex, (match) => {
-      const e = this.placeholderRegex.exec(match)
+      const e = new RegExp(this.placeholderRegex).exec(match)
       return replace[e?.groups?.placeholder] ?? match
     })
   }
