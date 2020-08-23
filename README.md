@@ -11,7 +11,7 @@ $ npm install @benricheson101/i18n
 2. Import and instantiate the constructor
 ```js
 const I18n = require('@benricheson101/i18n')
-const i = new I18n()
+const i = new I18n({ fallback: 'en' })
 ```
 3. Parse yaml
 ```js
@@ -33,11 +33,14 @@ i.replace('en', 'PLACEHOLDER', { food: 'potato' }) // This has a placeholder: po
 i.get('en', 'COMMAND:MAN:SHORT_DESC') // Read a command's manual
 ```
 
-## Methods:
+## Options and Methods:
+### Constructor Options:
+- `fallback: string` - set a fallback language code
+
 ### Parse Methods:
 - `parseDir(dir: string)` - adds all files ending in `.yml` from the specified dir
-- `parseFile(dir: string)` - adds a single file
-- `parseRecursive(file: string)` - adds all yaml files in a dir/subdirs recursively
+- `parseFile(file: string)` - adds a single file
+- `parseRecursive(dir: string)` - adds all yaml files in a dir/subdirs recursively
 - `parse(yaml: string)` - adds a yaml string
 
 ### String Methods:

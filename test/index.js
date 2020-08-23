@@ -7,6 +7,6 @@ i.parseRecursive('./yml')
 
 // console.log(i.langs?.en)
 
-console.log(i.get('en', 'THING2'))
+console.log(i.get('oasdfjalksdfwo', 'DEEPLY.NESTED.EN.ONLY'))
 
 // assert(i.get('en', 'THING') === 'abcd')

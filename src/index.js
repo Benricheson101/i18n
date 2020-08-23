@@ -4,11 +4,13 @@ const merge = require('merge-deep')
 const recursive = require('fs-readdir-recursive')
 
 class I18n {
-  constructor () {
+  constructor (ops = {}) {
     this.placeholderRegex = /%{(?<placeholder>.*?)}/g
     this.langs = new Set()
     this.strings = {}
     this.raw = {}
+
+    this.fallback = ops?.fallback
   }
 
   /** Parse a yaml string */
@@ -88,15 +90,32 @@ class I18n {
   }
 
   _parseKeyString (code, str) {
-    if (!this.langs.has(code)) return null
+    if (!this.langs.has(code)) {
+      if (this?.fallback !== code) {
+        return this._parseKeyString(this.fallback, str)
+      }
+      return null
+    }
+
     let out = this.strings[code]
+    let output
 
     const layer = str.split(/[:.]/)
     for (const l of layer) {
-      if (Object.keys(out).includes(l)) out = out[l]
-      else return null
+      if (Object.keys(out).includes(l)) {
+        out = out[l]
+        output = out
+      } else output = null
     }
-    return out
+
+    if (
+      !output &&
+      this.fallback &&
+      code !== this.fallback
+    ) {
+      return this._parseKeyString(this.fallback, str)
+    }
+    return output
   }
 
   set regex (r) {
