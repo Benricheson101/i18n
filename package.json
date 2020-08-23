@@ -1,7 +1,7 @@
 {
   "name": "@benricheson101/i18n",
   "description": "A very tiny Node.js internationalization library",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "src/index.js",
   "license": "MIT",
   "types": "src/index.d.ts",
