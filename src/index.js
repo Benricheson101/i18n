@@ -80,13 +80,38 @@ class I18n {
    * @returns {string} - the translated string
    */
   replace (code, string, replace = {}) {
-    const str = this._parseKeyString(code, string)
-    if (!str) return string
+    const replacer = (str) => {
+      return str.replace(this.placeholderRegex, (match) => {
+        const e = new RegExp(this.placeholderRegex).exec(match)
+        return replace[e?.groups?.placeholder] ?? match
+      })
+    }
 
-    return str.replace(this.placeholderRegex, (match) => {
-      const e = new RegExp(this.placeholderRegex).exec(match)
-      return replace[e?.groups?.placeholder] ?? match
-    })
+    const m = this._parseKeyString(code, string)
+    if (!m) return string
+
+    const returnedStrings = []
+
+    if (Array.isArray(m)) {
+      for (const str of m) {
+        if (typeof str !== 'string') {
+          returnedStrings.push(str)
+          continue
+        }
+
+        returnedStrings.push(
+          replacer(str)
+        )
+      }
+    } else if (typeof m === 'string') {
+      returnedStrings.push(
+        replacer(m)
+      )
+    } else {
+      returnedStrings.push(m)
+    }
+
+    return returnedStrings.length === 1 ? returnedStrings[0] : returnedStrings
   }
 
   _parseKeyString (code, str) {

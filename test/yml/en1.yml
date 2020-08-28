@@ -1,9 +1,6 @@
-en:
-  # EN_ONLY: 'this string is in `en` only'
-  DEEPLY:
-    NESTED:
-      EN:
-        ONLY: oooooo
-  STRING: 'en: {{one}} %{two} %{three}'
-  CMD:
-    STR1: '12345'
+'en-US':
+  ARRAY:
+    - 'first'
+    - 'second'
+    - '%{number}'
+  STRING: 'string'

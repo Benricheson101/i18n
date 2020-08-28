@@ -24,6 +24,11 @@ en:
   COMMAND:
     MAN:
       SHORT_DESC: 'Read a command\'s manual'
+    OPTIONS:
+      - 'works'
+      - 'with'
+      - '%{datatype}'
+      - 'too'
   `)
 ```
 4. Use the string methods!
