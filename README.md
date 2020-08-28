@@ -36,6 +36,7 @@ en:
 i.get('en', 'STRING') // aaaaaa
 i.replace('en', 'PLACEHOLDER', { food: 'potato' }) // This has a placeholder: potato
 i.get('en', 'COMMAND:MAN:SHORT_DESC') // Read a command's manual
+i.replace('en', 'OPTIONS', { datatype: 'arrays' })
 ```
 
 ## Options and Methods:
