@@ -1,5 +1,5 @@
 declare module '@benricheson101/i18n' {
-  export class I18n {
+  export default class I18n {
     placeholderRegex: RegExp
     regex: RegExp
     langs: any
