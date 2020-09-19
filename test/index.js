@@ -7,7 +7,7 @@ console.log(
   'array:',
   i.replace(
     'en-US',
-    'ARRAY',
+    'skadlfjsaf',
     { number: 'three' }
   )
 )

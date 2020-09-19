@@ -10,7 +10,7 @@ class I18n {
     this.strings = {}
     this.raw = {}
 
-    this.fallback = ops?.fallback
+    this.fallback = ops && ops.fallback
   }
 
   /** Parse a yaml string */
@@ -69,7 +69,7 @@ class I18n {
    * @returns {string} - the translated string
    */
   get (code, string) {
-    return this._parseKeyString(code, string) ?? string
+    return this._parseKeyString(code, string) || string
   }
 
   /**
@@ -83,7 +83,12 @@ class I18n {
     const replacer = (str) => {
       return str.replace(this.placeholderRegex, (match) => {
         const e = new RegExp(this.placeholderRegex).exec(match)
-        return replace[e?.groups?.placeholder] ?? match
+        return replace[
+          e &&
+          e.groups &&
+          e.groups.placeholder
+        // e?.groups?.placeholder
+        ] || match
       })
     }
 
@@ -116,7 +121,7 @@ class I18n {
 
   _parseKeyString (code, str) {
     if (!this.langs.has(code)) {
-      if (this?.fallback !== code) {
+      if (this.fallback !== code) {
         return this._parseKeyString(this.fallback, str)
       }
       return null

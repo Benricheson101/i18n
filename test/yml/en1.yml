@@ -4,3 +4,4 @@
     - 'second'
     - '%{number}'
   STRING: 'string'
+  AAA: BBB
