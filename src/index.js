@@ -13,7 +13,8 @@ class I18n {
     this.fallback = ops && ops.fallback
   }
 
-  /** Parse a yaml string 
+  /**
+   * Parse a yaml string
    * @param {string} string - parse yaml text
    */
   parse (yml) {
@@ -31,7 +32,8 @@ class I18n {
     return this
   }
 
-  /** Parse all yaml files in a specified directory 
+  /**
+   * Parse all yaml files in a specified directory
    * @param {string} string - the path to the directory
    */
   parseDir (dir) {
@@ -43,8 +45,8 @@ class I18n {
     return this
   }
 
-  /** 
-   * Parse all yaml files in a dir/subdirs recursively 
+  /**
+   * Parse all yaml files in a dir/subdirs recursively
    * @param {string} string - the path to the directory
    */
   parseRecursive (dir) {
@@ -58,13 +60,13 @@ class I18n {
     return this
   }
 
-  /** 
+  /**
    * Parse a single yaml file
    * @param {string} string - the path to the yml file
    */
   parseFile (path) {
     if (!path) throw new Error('no path')
-    if (!path.endsWith('.yml')) throw new Error("File must end with yaml/yml.")
+    if (!path.endsWith('.yml')) throw new Error('File must end with yaml/yml.')
 
     const contents = readFileSync(path, { encoding: 'utf-8' })
     this.parse(contents)
