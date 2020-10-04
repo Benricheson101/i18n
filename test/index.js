@@ -1,7 +1,7 @@
 const I18n = require('../src/index.js')
 
 const i = new I18n({ fallback: 'en' })
-  .parseDir('./test_yml')
+  .parseDir('./test/test_yml')
   // .parseRecursive('./test/yml')
 
 console.log(i.raw)
