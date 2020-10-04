@@ -16,7 +16,7 @@ declare module '@benricheson101/i18n' {
 
     generate (code: string): this
 
-    get (code: string, string: string): string
-    replace (code: string, string: string, replace: obj): string
+    get (code: string, string: string): string | string[] | obj
+    replace (code: string, string: string, replace: obj): string | string[] | obj
   }
 }

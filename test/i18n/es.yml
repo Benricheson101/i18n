@@ -1,0 +1,4 @@
+es: {}
+generator:
+  id: foods
+  ignore: true

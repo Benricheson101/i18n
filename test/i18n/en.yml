@@ -7,7 +7,6 @@ en:
     dessert:
       - ice cream
       - '%{dessert}'
-
 generator:
   id: foods
   ignore: false
