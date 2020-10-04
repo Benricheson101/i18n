@@ -1,19 +1,14 @@
 const I18n = require('../src/index.js')
+const assert = require('assert')
 
 const i = new I18n({ fallback: 'en' })
-  .parseDir('./test/test_yml')
-  // .parseRecursive('./test/yml')
+  .parseDir('./i18n')
+  .generate()
 
-console.log(i.raw)
-i.generate()
+assert(
+  i.get('en', 'food:fruit').toString() === ['apple', 'banana'].toString()
+)
 
-// console.log(i.raw.find((e) => e[0] === 'en'))
-
-// console.log(
-//   'array:',
-//   i.replace(
-//     'en-US',
-//     'skadlfjsaf',
-//     { number: 'three' }
-//   )
-// )
+assert(
+  i.replace('en', 'food:favorite', { favorite_food: 'pizza' }) === 'pizza'
+)

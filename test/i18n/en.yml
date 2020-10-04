@@ -1,0 +1,13 @@
+en:
+  food:
+    favorite: '%{favorite_food}'
+    fruit:
+      - apple
+      - banana
+    dessert:
+      - ice cream
+      - '%{dessert}'
+
+generator:
+  id: foods
+  ignore: false

@@ -1,0 +1,10 @@
+fr:
+  food:
+    favorite: ''
+    fruit:
+      - ''
+    dessert:
+      - ''
+generator:
+  id: foods
+  ignore: false

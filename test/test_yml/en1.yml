@@ -1,9 +1,0 @@
-en:
-  string: asdfklasjdfkl
-  number: 1
-  array:
-    - hi
-    - hello
-
-generator:
-  id: 1

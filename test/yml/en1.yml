@@ -1,7 +1,0 @@
-'en-US':
-  ARRAY:
-    - 'first'
-    - 'second'
-    - '%{number}'
-  STRING: 'string'
-  AAA: BBB
