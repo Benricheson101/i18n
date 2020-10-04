@@ -1,9 +1,12 @@
 declare module '@benricheson101/i18n' {
+  type obj = {[key: string]: any}
+
   export default class I18n {
     placeholderRegex: RegExp
     regex: RegExp
-    langs: any
-    raw: any
+    langs: Set<string>
+    strings: obj
+    raw: [string, { raw: obj, file: string }][]
 
     constructor ()
 
@@ -11,8 +14,10 @@ declare module '@benricheson101/i18n' {
     parseFile (file: string): this
     parse (yaml: string): this
 
-    get (code: string, string: string): string
+    generate (code: string): this
+    _generate (a: obj , b: obj): obj
 
-    replace (code: string, string: string, replace: any): string
+    get (code: string, string: string): string
+    replace (code: string, string: string, replace: obj): string
   }
 }

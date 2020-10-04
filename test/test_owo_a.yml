@@ -1,0 +1,7 @@
+test: fiwst
+some:
+  other: owo
+  and: aaaa
+  empty: {}
+  arr:
+    - ''

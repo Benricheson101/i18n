@@ -1,13 +1,19 @@
 const I18n = require('../src/index.js')
 
-const i = new I18n()
-  .parseRecursive('./yml')
+const i = new I18n({ fallback: 'en' })
+  .parseDir('./test_yml')
+  // .parseRecursive('./test/yml')
 
-console.log(
-  'array:',
-  i.replace(
-    'en-US',
-    'skadlfjsaf',
-    { number: 'three' }
-  )
-)
+console.log(i.raw)
+i.generate()
+
+// console.log(i.raw.find((e) => e[0] === 'en'))
+
+// console.log(
+//   'array:',
+//   i.replace(
+//     'en-US',
+//     'skadlfjsaf',
+//     { number: 'three' }
+//   )
+// )
