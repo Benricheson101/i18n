@@ -108,7 +108,7 @@ es: {}
 generator:
   id: 1
 ```
-> Note: the `generator.id` property can be anything (string or number); after running the generator, all files with the same `generator.id` will have the same structure and strings. setting `generator.exclude` to `false` or not including a `generator` object at all will ignore the file.
+> Note: the `generator.id` property can be anything (string or number); after running the generator, all files with the same `generator.id` will have the same structure and strings. setting `generator.ignore` to `false` or not including a `generator` object at all will ignore the file.
 
 ```js
 new I18n({ fallback: 'en' })

@@ -15,7 +15,6 @@ declare module '@benricheson101/i18n' {
     parse (yaml: string): this
 
     generate (code: string): this
-    _generate (a: obj , b: obj): obj
 
     get (code: string, string: string): string
     replace (code: string, string: string, replace: obj): string

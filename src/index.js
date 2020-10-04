@@ -138,14 +138,14 @@ class I18n {
         if (
           !def ||
           !def.length >= 2 ||
-          (def[1].raw.generator && def[1].raw.generator.exempt === true)
+          (def[1].raw.generator && def[1].raw.generator.ignore)
         ) continue
 
         const f = findObj(c, id)
         if (
           !f ||
           !f.length >= 2 ||
-          (f[1].raw.generator && f[1].raw.generator.exempt === true)
+          (f[1].raw.generator && f[1].raw.generator.ignore)
         ) continue
 
         const g = this._generate(def[1].raw.en, f[1].raw[c])
