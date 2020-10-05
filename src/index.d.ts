@@ -10,9 +10,10 @@ declare module '@benricheson101/i18n' {
 
     constructor ()
 
+    parseRecursive (dir: string): this
     parseDir (dir: string): this
-    parseFile (file: string): this
-    parse (yaml: string): this
+    parseFile (path: string): this
+    parse (yml: string, filename?: string): this
 
     generate (code: string): this
 
